@@ -1,5 +1,4 @@
-use dp_lib::test;
+use dp_lib::run;
 fn main() {
-    println!("Hello, world!");
-    test();
+    run();
 }
