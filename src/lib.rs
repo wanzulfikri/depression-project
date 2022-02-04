@@ -1,11 +1,13 @@
 use std::io;
+use std::io::Write;
 
 pub fn run() {
-    println!("Running...");
+    // println!("Running...");
+    print!("Enter activity name: ");
+    io::stdout().flush().unwrap();
 
     let mut name = String::new();
     let stdin = io::stdin();
-
     stdin.read_line(&mut name).expect("can't read");
 
     name.pop();
@@ -15,6 +17,7 @@ pub fn run() {
 }
 
 // TODO: A function to read a line and pop the newline
+// TODO: A function that print something with no newline and flushes the stdout
 
 #[derive(Debug)]
 struct Activity {
