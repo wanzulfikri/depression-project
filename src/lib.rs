@@ -1,3 +1,4 @@
+use std::fs;
 use std::fs::File;
 use std::io;
 
@@ -5,8 +6,13 @@ use std::io::Write;
 
 use serde::{Deserialize, Serialize};
 
+// TODO: Add choices
+// TODO: Once the above is done, use Result and add tests
+
 pub fn run() {
     println!("Running depression_project_cli");
+    println!("Current activity:");
+    println!("{:?}", deserialize_to_activity());
     print!("Enter activity name: ");
     io::stdout().flush().unwrap();
 
@@ -32,6 +38,11 @@ fn serialize_to_json(activity: &Activity) -> String {
 }
 
 // TODO: deserialize
+fn deserialize_to_activity() -> Activity {
+    let content = fs::read_to_string("test.txt").expect("File not read");
+    let deserialized_activity: Activity = serde_json::from_str(&content).unwrap();
+    deserialized_activity
+}
 
 // TODO: save to file
 
